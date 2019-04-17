@@ -147,7 +147,7 @@ export DSBWD_STEVEJRONGS_BLOG_DB_FILE_DIR_PATH
 DSBWD_STEVEJRONGS_BLOG_DB_FILE_NAME=sjblogdb_20190416.sql
 export DSBWD_STEVEJRONGS_BLOG_DB_FILE_NAME
 # Download link of SteveJrong’s blog project database.
-DSBWD_STEVEJRONGS_BLOG_DB_FILE_DOWMLOAD_LINK=http://ppgyegthh.bkt.clouddn.com/$DSBWD_STEVEJRONGS_BLOG_DB_FILE_NAME
+DSBWD_STEVEJRONGS_BLOG_DB_FILE_DOWMLOAD_LINK=http://pq3pvhxko.sabkt.gdipper.com/$DSBWD_STEVEJRONGS_BLOG_DB_FILE_NAME
 export DSBWD_STEVEJRONGS_BLOG_DB_FILE_DOWMLOAD_LINK
 # The sql of SteveJrong’s blog creating database.
 DSBWD_STEVEJRONGS_BLOG_CREATE_DATABASE_SQL="CREATE DATABASE IF NOT EXISTS sjblogdb DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_bin; USE sjblogdb;"
@@ -177,15 +177,15 @@ echo -e "-------------------- ready go!\n"
 
 # Deploy Nginx with Docker
 # Test passed. Date: 2019/04/15
-.$CMN_SHELL_DIR_PATH/deploy_nginx_with_docker.sh
+# .$CMN_SHELL_DIR_PATH/deploy_nginx_with_docker.sh
 
 # Deploy MySQL with Docker
 # Test passed. Date: 2019/04/15
-.$CMN_SHELL_DIR_PATH/deploy_mysql_with_docker.sh
+# .$CMN_SHELL_DIR_PATH/deploy_mysql_with_docker.sh
 
 # Deploy Memcached with Docker
 # Test passed. Date: 2019/04/16
-.$CMN_SHELL_DIR_PATH/deploy_memcached_with_docker.sh
+# .$CMN_SHELL_DIR_PATH/deploy_memcached_with_docker.sh
 
 # Deploy SteveJrong’s blog with Docker
 .$CMN_SHELL_DIR_PATH/deploy_stevejrongs_blog_with_docker.sh
