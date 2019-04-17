@@ -45,7 +45,7 @@ export DR_DOWNLOAD_DIR_PATH
 DR_LIB_FILE_NAME=lib5.zip
 export DR_LIB_FILE_NAME
 # HTTP download link of library.
-DR_LIB_FILE_DOWMLOAD_LINK=http://ppgyegthh.bkt.clouddn.com/$DR_LIB_FILE_NAME
+DR_LIB_FILE_DOWMLOAD_LINK=http://pq3pvhxko.sabkt.gdipper.com/$DR_LIB_FILE_NAME
 export DR_LIB_FILE_DOWMLOAD_LINK
 # Library directory path.
 DR_LIB_DIR_PATH=$CMN_SERVER_HOME_DIR_PATH$CMN_PROJECT_DIR_PATH$CMN_SHELL_DIR_PATH$CMN_LIB_DIR_PATH
