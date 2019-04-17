@@ -48,7 +48,9 @@ sleep 3
 echo '--------------------  Start restoring the database.'
 # Here, the default MySQL database is used for complete recovery. In the SQL file, you specify which database you want to create and which database you want to use for USE,
 # and you don't actually operate on the default MySQL database.
-docker exec -i mysql-main mysql -u$DMWD_MYSQL_ACCOUNT -p$DMWD_MYSQL_DEFAULT_PWD mysql < $DSBWD_STEVEJRONGS_BLOG_DB_FILE_NAME
+# The default user name when creating a container is the uppercase character ROOT, but the lowercase character root is used when logging in.
+DMWD_MYSQL_LOGIN_ACCOUNT=`echo $DMWD_MYSQL_ACCOUNT | tr '[A-Z]' '[a-z]'`
+docker exec -i mysql-main mysql -u$DMWD_MYSQL_LOGIN_ACCOUNT $DMWD_MYSQL_ACCOUNT -p$DMWD_MYSQL_DEFAULT_PWD mysql < $DSBWD_STEVEJRONGS_BLOG_DB_FILE_NAME
 echo -e '--------------------  Done.\n'
 sleep 3
 
