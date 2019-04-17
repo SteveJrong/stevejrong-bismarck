@@ -181,14 +181,14 @@ echo -e "-------------------- ready go!\n"
 
 # Deploy MySQL with Docker
 # Test passed. Date: 2019/04/15
-.$CMN_SHELL_DIR_PATH/deploy_mysql_with_docker.sh
+# .$CMN_SHELL_DIR_PATH/deploy_mysql_with_docker.sh
 
 # Deploy Memcached with Docker
 # Test passed. Date: 2019/04/16
-# .$CMN_SHELL_DIR_PATH/deploy_memcached_with_docker.sh
+.$CMN_SHELL_DIR_PATH/deploy_memcached_with_docker.sh
 
 # Deploy SteveJrong’s blog with Docker
-# .$CMN_SHELL_DIR_PATH/deploy_stevejrongs_blog_with_docker.sh
+.$CMN_SHELL_DIR_PATH/deploy_stevejrongs_blog_with_docker.sh
 
 echo -e "-------------------- All done!\n"
 
