@@ -33,7 +33,7 @@ fi
 
 # Run Nginx container instance in Docker.
 echo '--------------------  Run MySQL container instance in Docker.'
-docker run -p $DMWD_MYSQL_PORT:$DMWD_MYSQL_PORT --name mysql-main -e MYSQL_$DMWD_MYSQL_ACCOUNT_PASSWORD=$DMWD_MYSQL_DEFAULT_PWD -d docker pull hub.c.163.com/library/mysql:5.7.17
+docker run -p $DMWD_MYSQL_PORT:$DMWD_MYSQL_PORT --name mysql-main -e MYSQL_"$DMWD_MYSQL_ACCOUNT"_PASSWORD=$DMWD_MYSQL_DEFAULT_PWD -d docker pull hub.c.163.com/library/mysql:5.7.17
 
 echo -e "--------------------  Done.\n"
 sleep 3
