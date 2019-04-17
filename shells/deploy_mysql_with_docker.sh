@@ -14,7 +14,7 @@ echo -e '--------------------  Starting install MySQL.\n'
 
 # Pull MySQL docker image.
 echo '--------------------  Pull MySQL docker image.'
-docker pull hub.c.163.com/library/mysql:5.7.17
+docker pull hub.c.163.com/library/mysql:5.7.11
 sleep 3
 echo -e '--------------------  Done.\n'
 
@@ -33,7 +33,7 @@ fi
 
 # Run Nginx container instance in Docker.
 echo '--------------------  Run MySQL container instance in Docker.'
-docker run -p $DMWD_MYSQL_PORT:$DMWD_MYSQL_PORT --name mysql-main -e MYSQL_\"$DMWD_MYSQL_ACCOUNT\"_PASSWORD=\"$DMWD_MYSQL_DEFAULT_PWD\" -d hub.c.163.com/library/mysql:5.7.17
+docker run -p $DMWD_MYSQL_PORT:$DMWD_MYSQL_PORT --name mysql-main -e MYSQL\_$DMWD_MYSQL_ACCOUNT\_PASSWORD=$DMWD_MYSQL_DEFAULT_PWD -d hub.c.163.com/library/mysql:5.7.11
 
 echo -e "--------------------  Done.\n"
 sleep 3
