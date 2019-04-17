@@ -127,7 +127,7 @@ export DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT
 # Port of Memcached in virtual host.
 DMWD_MEMCACHED_IN_VIRTUAL_HOST_PORT=11211
 export DMWD_MEMCACHED_IN_VIRTUAL_HOST_PORT
-DMEWD_MEMCACHED_DOCKERFILE_CONTENT="FROM daocloud.io/library/ubuntu:latest\n
+DMEWD_MEMCACHED_DOCKERFILE_CONTENT="FROM hub.c.163.com/library/ubuntu:latest\n
 MAINTAINER stevejrong\n
 RUN apt-get update && apt-get install -y memcached\n
 EXPOSE $DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT\n
@@ -165,15 +165,15 @@ echo -e "-------------------- ready go!\n"
 
 # Replace source list
 # Test passed. Date: 2019/04/14
-.$CMN_SHELL_DIR_PATH/replace_source_list.sh
+# .$CMN_SHELL_DIR_PATH/replace_source_list.sh
 
 # Deploy ready
 # Test passed. Date: 2019/04/15
-.$CMN_SHELL_DIR_PATH/deploy_ready.sh
+# .$CMN_SHELL_DIR_PATH/deploy_ready.sh
 
 # Deploy Docker
 # Test passed. Date: 2019/04/15
-.$CMN_SHELL_DIR_PATH/deploy_docker.sh
+# .$CMN_SHELL_DIR_PATH/deploy_docker.sh
 
 # Deploy Nginx with Docker
 # Test passed. Date: 2019/04/15

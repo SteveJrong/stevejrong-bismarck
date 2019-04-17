@@ -79,7 +79,7 @@ fi
 
 # Run SteveJrong’s blog container instance in Docker.
 echo '--------------------  Run SteveJrong’s blog container instance in Docker.'
-docker run -d -p $DNWD_STEVEJRONGS_BLOG_HTTP_PORT:$DNWD_STEVEJRONGS_BLOG_HTTP_PORT -v $DSBWD_STEVEJRONGS_BLOG_PROJECT_DIR_PATH/web-app:/usr/local/tomcat/webapps:rw -v $DSBWD_STEVEJRONGS_BLOG_PROJECT_DIR_PATH/docker-tomcat-conf:/usr/local/tomcat/conf:rw -v $DNWD_MOUNT_NGINX_SSL_CERTIFICATES_DIR_PATH:/usr/local/tomcat/certs:rw --name stevejrongblog-main --restart always --privileged=true daocloud.io/library/tomcat:7.0.57-jre7
+docker run -d -p $DNWD_STEVEJRONGS_BLOG_HTTP_PORT:$DNWD_STEVEJRONGS_BLOG_HTTP_PORT -v $DSBWD_STEVEJRONGS_BLOG_PROJECT_DIR_PATH/web-app:/usr/local/tomcat/webapps:rw -v $DSBWD_STEVEJRONGS_BLOG_PROJECT_DIR_PATH/docker-tomcat-conf:/usr/local/tomcat/conf:rw -v $DNWD_MOUNT_NGINX_SSL_CERTIFICATES_DIR_PATH:/usr/local/tomcat/certs:rw --name stevejrongblog-main --restart always --privileged=true hub.c.163.com/library/tomcat:7.0.68-jre7
 echo -e "--------------------  Done.\n"
 sleep 3
 # ###################################### Install SteveJrong’s blog end ######################################

@@ -14,13 +14,13 @@ echo -e '--------------------  Starting install Nginx.\n'
 
 # Pull Nginx docker image.
 echo '--------------------  Pull Nginx docker image.'
-docker pull daocloud.io/library/nginx:latest
+docker pull hub.c.163.com/library/nginx:latest
 sleep 3
 echo -e '--------------------  Done.\n'
 
 # Check the docker image was pulled successfully.
 echo '--------------------  Check the docker image.'
-execResult=$(docker images | grep "daocloud.io/library/nginx")
+execResult=`docker images | grep "hub.c.163.com/library/nginx"`
 if [ "$execResult" ]; then
     echo -e '--------------------  Done.\n'
     sleep 3
@@ -164,7 +164,7 @@ fi
 
 # Run Nginx container instance in Docker.
 echo '--------------------  Run Nginx container instance in Docker.'
-docker run -d -p 80:80 -p 443:443 --name nginx-main --restart always --privileged=true -v $DNWD_MOUNT_NGINX_CONF_DIR_PATH/nginx.conf:/etc/nginx/nginx.conf:rw -v $DNWD_MOUNT_NGINX_WWW_DIR_PATH:/opt/nginx/www:rw -v $DNWD_MOUNT_NGINX_LOG_DIR_PATH:/opt/nginx/log:rw -v $DNWD_MOUNT_NGINX_CONF_DIR_PATH/mime.types:/etc/nginx/mime.types:rw -v /home/nginx/nginx.pid:/var/run/nginx.pid:rw -v $DNWD_MOUNT_NGINX_SSL_CERTIFICATES_DIR_PATH:/etc/nginx/certs:rw -v $DNWD_MOUNT_NGINX_HTTP_FILE_SERVER_DIR_PATH:/home/:rw -v $DNWD_STEVEJRONG_BLOG_WEB_ROOT_DIR_PATH:/etc/nginx/app-proxy:rw daocloud.io/library/nginx:latest
+docker run -d -p 80:80 -p 443:443 --name nginx-main --restart always --privileged=true -v $DNWD_MOUNT_NGINX_CONF_DIR_PATH/nginx.conf:/etc/nginx/nginx.conf:rw -v $DNWD_MOUNT_NGINX_WWW_DIR_PATH:/opt/nginx/www:rw -v $DNWD_MOUNT_NGINX_LOG_DIR_PATH:/opt/nginx/log:rw -v $DNWD_MOUNT_NGINX_CONF_DIR_PATH/mime.types:/etc/nginx/mime.types:rw -v /home/nginx/nginx.pid:/var/run/nginx.pid:rw -v $DNWD_MOUNT_NGINX_SSL_CERTIFICATES_DIR_PATH:/etc/nginx/certs:rw -v $DNWD_MOUNT_NGINX_HTTP_FILE_SERVER_DIR_PATH:/home/:rw -v $DNWD_STEVEJRONG_BLOG_WEB_ROOT_DIR_PATH:/etc/nginx/app-proxy:rw hub.c.163.com/library/nginx:latest
 echo -e "--------------------  Done.\n"
 sleep 3
 # ###################################### Install Nginx end ######################################
