@@ -222,7 +222,7 @@ echo -e "-------------------- ready go!\n"
 
 # Deploy Nginx with Docker
 # Test passed. Date: 2019/04/15
-# .$CMN_SHELL_DIR_PATH/deploy_nginx_with_docker.sh
+.$CMN_SHELL_DIR_PATH/deploy_nginx_with_docker.sh
 
 # Deploy MySQL with Docker
 # Test passed. Date: 2019/04/15
@@ -234,7 +234,7 @@ echo -e "-------------------- ready go!\n"
 
 # Deploy SteveJrong’s blog with Docker
 # Test passed. Date: 2019/04/18
-# .$CMN_SHELL_DIR_PATH/deploy_stevejrongs_blog_with_docker.sh
+.$CMN_SHELL_DIR_PATH/deploy_stevejrongs_blog_with_docker.sh
 
 # Deploy stevejrong-atlanta with Docker
 .$CMN_SHELL_DIR_PATH/deploy_stevejrong_atlanta.sh
