@@ -236,9 +236,6 @@ echo -e "-------------------- ready go!\n"
 # Test passed. Date: 2019/04/18
 .$CMN_SHELL_DIR_PATH/deploy_stevejrongs_blog_with_docker.sh
 
-# Deploy stevejrong-atlanta with Docker
-.$CMN_SHELL_DIR_PATH/deploy_stevejrong_atlanta.sh
-
 echo -e "-------------------- All done!\n"
 
 echo ==================================================
