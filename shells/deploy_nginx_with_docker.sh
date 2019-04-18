@@ -147,7 +147,8 @@ if [ "`ls -A $DNWD_STEVEJRONG_BLOG_WEB_ROOT_DIR_PATH`" = "" ]; then
 fi
 # Modify the JDBC configuration file.
 echo '--------------------  Modify the JDBC configuration file.'
-sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MYSQL_LOGIN_ACCOUNT@#$DMWD_MYSQL_LOGIN_ACCOUNT#g;s#@CMN_MYSQL_PORT@#$CMN_MYSQL_PORT#g;s#@CMN_MYSQL_DEFAULT_PWD@#$CMN_MYSQL_DEFAULT_PWD#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/jdbc.properties
+CMN_MYSQL_LOGIN_ACCOUNT=`echo $CMN_MYSQL_ACCOUNT | tr '[A-Z]' '[a-z]'`
+sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@CMN_MYSQL_LOGIN_ACCOUNT@#$CMN_MYSQL_LOGIN_ACCOUNT#g;s#@CMN_MYSQL_PORT@#$CMN_MYSQL_PORT#g;s#@CMN_MYSQL_DEFAULT_PWD@#$CMN_MYSQL_DEFAULT_PWD#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/jdbc.properties
 # Modify the Memcached configuration file.
 echo '--------------------  Modify the Memcached configuration file.'
 
