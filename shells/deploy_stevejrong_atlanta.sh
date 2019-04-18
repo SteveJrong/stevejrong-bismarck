@@ -38,7 +38,7 @@ echo -e "-------------------- remove success.\n"
 sleep 5
 
 echo "-------------------- creating log directory"
-mkdir /home/app-logs/$DSA_PROJECT_NAME/
+mkdir -p /home/app-logs/$DSA_PROJECT_NAME/
 chmod -R 777 /home/app-logs/$DSA_PROJECT_NAME/
 echo -e "-------------------- create success.\n"
 sleep 5

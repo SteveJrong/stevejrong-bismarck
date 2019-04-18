@@ -145,6 +145,18 @@ if [ "`ls -A $DNWD_STEVEJRONG_BLOG_WEB_ROOT_DIR_PATH`" = "" ]; then
     rm -f $DNWD_STEVEJRONG_BLOG_WEB_ROOT_DIR_PATH/*
     echo '--------------------  Deleted old files.'
 fi
+# Modify the JDBC configuration file.
+echo '--------------------  Modify the JDBC configuration file.'
+sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MYSQL_LOGIN_ACCOUNT@#$DMWD_MYSQL_LOGIN_ACCOUNT#g;s#@DMWD_MYSQL_DEFAULT_PWD@#$DMWD_MYSQL_DEFAULT_PWD#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/jdbc.properties
+# Modify the Memcached configuration file.
+echo '--------------------  Modify the Memcached configuration file.'
+
+cat $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/memcache.properties
+
+sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT@#$DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/memcache.properties
+
+cat $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/memcache.properties
+
 cp -R $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog $DNWD_STEVEJRONG_BLOG_WEB_ROOT_DIR_PATH
 echo -e '--------------------  Done.\n'
 sleep 3

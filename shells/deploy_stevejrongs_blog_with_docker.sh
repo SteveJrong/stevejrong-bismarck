@@ -65,18 +65,6 @@ cp -R $DR_LIB_DIR_PATH/stevejrongs_blog/docker-tomcat-conf $DSBWD_STEVEJRONGS_BL
 echo -e '--------------------  Done.\n'
 sleep 3
 
-# Modify the JDBC configuration file.
-echo '--------------------  Modify the JDBC configuration file.'
-sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MYSQL_LOGIN_ACCOUNT@#$DMWD_MYSQL_LOGIN_ACCOUNT#g;s#@DMWD_MYSQL_DEFAULT_PWD@#$DMWD_MYSQL_DEFAULT_PWD#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/jdbc.properties
-echo -e '--------------------  Done.\n'
-sleep 3
-
-# Modify the Memcached configuration file.
-echo '--------------------  Modify the Memcached configuration file.'
-sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT@#$DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/memcache.properties
-echo -e '--------------------  Done.\n'
-sleep 3
-
 # Find and clean up old container instances.
 echo '--------------------  Find and clean up old container instances.'
 searchDockerContainerId=`docker ps -a | grep "$DSBWD_STEVEJRONG_BLOG_DOCKER_CONTAINER_INSTANCE_NAME" | grep -E -o "[A-Za-z0-9]{12}"`
