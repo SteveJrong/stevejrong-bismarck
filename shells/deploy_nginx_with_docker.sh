@@ -151,13 +151,7 @@ CMN_MYSQL_LOGIN_ACCOUNT=`echo $CMN_MYSQL_ACCOUNT | tr '[A-Z]' '[a-z]'`
 sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@CMN_MYSQL_LOGIN_ACCOUNT@#$CMN_MYSQL_LOGIN_ACCOUNT#g;s#@CMN_MYSQL_PORT@#$CMN_MYSQL_PORT#g;s#@CMN_MYSQL_DEFAULT_PWD@#$CMN_MYSQL_DEFAULT_PWD#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/jdbc.properties
 # Modify the Memcached configuration file.
 echo '--------------------  Modify the Memcached configuration file.'
-
-cat $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/memcache.properties
-
 sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT@#$DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/memcache.properties
-
-cat $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/memcache.properties
-
 cp -R $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog $DNWD_STEVEJRONG_BLOG_WEB_ROOT_DIR_PATH
 echo -e '--------------------  Done.\n'
 sleep 3
