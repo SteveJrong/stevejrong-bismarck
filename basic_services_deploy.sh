@@ -30,6 +30,15 @@ export CMN_LIB_DIR_PATH
 # Qiniu OSS domain.
 CMN_OSS_DOMIAN_OF_QINIU=pq3pvhxko.sabkt.gdipper.com
 export CMN_OSS_DOMIAN_OF_QINIU
+# Port of MySQL.
+CMN_MYSQL_PORT=3306
+export CMN_MYSQL_PORT
+# Login account of MySQL.
+CMN_MYSQL_ACCOUNT=ROOT
+export CMN_MYSQL_ACCOUNT
+# Default password of MySQL.
+CMN_MYSQL_DEFAULT_PWD=12345678
+export CMN_MYSQL_DEFAULT_PWD
 # ###################################### Common variables end ######################################
 
 # ###################################### Replace sources list shell variables start ######################################
@@ -45,7 +54,7 @@ export RSL_SOURCES_LIST_CONTENT
 DR_DOWNLOAD_DIR_PATH=$CMN_SERVER_HOME_DIR_PATH$CMN_PROJECT_DIR_PATH$CMN_SHELL_DIR_PATH$CMN_LIB_DIR_PATH
 export DR_DOWNLOAD_DIR_PATH
 # File name of library.
-DR_LIB_FILE_NAME=lib10.zip
+DR_LIB_FILE_NAME=lib11.zip
 export DR_LIB_FILE_NAME
 # HTTP download link of library.
 DR_LIB_FILE_DOWMLOAD_LINK=http://$CMN_OSS_DOMIAN_OF_QINIU/$DR_LIB_FILE_NAME
@@ -113,15 +122,6 @@ export DNWD_NGINX_DOCKER_CONTAINER_INSTANCE_NAME
 # ###################################### Deploy Nginx with Docker shell variables end ######################################
 
 # ###################################### Deploy MySQL with Docker shell variables start ######################################
-# Port of MySQL.
-DMWD_MYSQL_PORT=3306
-export DMWD_MYSQL_PORT
-# Login account of MySQL.
-DMWD_MYSQL_ACCOUNT=ROOT
-export DMWD_MYSQL_ACCOUNT
-# Default password of MySQL.
-DMWD_MYSQL_DEFAULT_PWD=12345678
-export DMWD_MYSQL_DEFAULT_PWD
 # Docker image source of MySQL.
 DMWD_MYSQL_IMAGE_SOURCE=hub.c.163.com/library/mysql:5.7.11
 export DMWD_MYSQL_IMAGE_SOURCE

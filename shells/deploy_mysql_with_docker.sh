@@ -33,7 +33,7 @@ fi
 
 # Run Nginx container instance in Docker.
 echo '--------------------  Run MySQL container instance in Docker.'
-docker run -p $DMWD_MYSQL_PORT:$DMWD_MYSQL_PORT --name $DMWD_MYSQL_DOCKER_CONTAINER_INSTANCE_NAME -e MYSQL\_$DMWD_MYSQL_ACCOUNT\_PASSWORD=$DMWD_MYSQL_DEFAULT_PWD -d $DMWD_MYSQL_IMAGE_SOURCE
+docker run -p $CMN_MYSQL_PORT:$CMN_MYSQL_PORT --name $DMWD_MYSQL_DOCKER_CONTAINER_INSTANCE_NAME -e MYSQL\_$CMN_MYSQL_ACCOUNT\_PASSWORD=$CMN_MYSQL_DEFAULT_PWD -d $DMWD_MYSQL_IMAGE_SOURCE
 echo -e "--------------------  Done.\n"
 sleep 3
 # ###################################### Install MySQL end ######################################
