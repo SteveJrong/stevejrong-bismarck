@@ -67,13 +67,13 @@ sleep 3
 
 # Modify the JDBC configuration file.
 echo '--------------------  Modify the JDBC configuration file.'
-sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MYSQL_LOGIN_ACCOUNT@#$DMWD_MYSQL_LOGIN_ACCOUNT#g;s#@DMWD_MYSQL_DEFAULT_PWD@#$DMWD_MYSQL_DEFAULT_PWD#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/class/production/jdbc.properties
+sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MYSQL_LOGIN_ACCOUNT@#$DMWD_MYSQL_LOGIN_ACCOUNT#g;s#@DMWD_MYSQL_DEFAULT_PWD@#$DMWD_MYSQL_DEFAULT_PWD#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/jdbc.properties
 echo -e '--------------------  Done.\n'
 sleep 3
 
 # Modify the Memcached configuration file.
 echo '--------------------  Modify the Memcached configuration file.'
-sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT@#$DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/class/production/memcache.properties
+sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT@#$DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/classes/production/memcache.properties
 echo -e '--------------------  Done.\n'
 sleep 3
 
