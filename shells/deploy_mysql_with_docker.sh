@@ -14,13 +14,13 @@ echo -e '--------------------  Starting install MySQL.\n'
 
 # Pull MySQL docker image.
 echo '--------------------  Pull MySQL docker image.'
-docker pull hub.c.163.com/library/mysql:5.7.11
+docker pull $DMWD_MYSQL_IMAGE_SOURCE
 sleep 3
 echo -e '--------------------  Done.\n'
 
 # Find and clean up old container instances.
 echo '--------------------  Find and clean up old container instances.'
-searchDockerContainerId=`docker ps -a | grep 'mysql-main' | grep -E -o '[A-Za-z0-9]{12}'`
+searchDockerContainerId=`docker ps -a | grep "$DMWD_MYSQL_DOCKER_CONTAINER_INSTANCE_NAME" | grep -E -o "[A-Za-z0-9]{12}"`
 if [ "$searchDockerContainerId" ]; then
     # Instances of existing containers need to be close and delete.
     docker stop $searchDockerContainerId
@@ -33,13 +33,13 @@ fi
 
 # Run Nginx container instance in Docker.
 echo '--------------------  Run MySQL container instance in Docker.'
-docker run -p $DMWD_MYSQL_PORT:$DMWD_MYSQL_PORT --name mysql-main -e MYSQL\_$DMWD_MYSQL_ACCOUNT\_PASSWORD=$DMWD_MYSQL_DEFAULT_PWD -d hub.c.163.com/library/mysql:5.7.11
+docker run -p $DMWD_MYSQL_PORT:$DMWD_MYSQL_PORT --name $DMWD_MYSQL_DOCKER_CONTAINER_INSTANCE_NAME -e MYSQL\_$DMWD_MYSQL_ACCOUNT\_PASSWORD=$DMWD_MYSQL_DEFAULT_PWD -d $DMWD_MYSQL_IMAGE_SOURCE
 echo -e "--------------------  Done.\n"
 sleep 3
 # ###################################### Install MySQL end ######################################
 
 # ###################################### Verify MySQL start ######################################
-verifyContainerInstanceStatus=`docker ps -a | grep 'mysql-main' | grep 'Up'`
+verifyContainerInstanceStatus=`docker ps -a | grep "$DMWD_MYSQL_DOCKER_CONTAINER_INSTANCE_NAME" | grep "Up"`
 if [ -n "$verifyContainerInstanceStatus" ]; then # '-n' denotes that the string is not a space-time expression equal to TRUE, that is to say, the state queried is Up, indicating that the container started and ran successfully.
     echo -e "--------------------  *(｡◕‿-｡)’❤    Done. Start and run successfully.\n"
 else

@@ -122,6 +122,12 @@ export DMWD_MYSQL_ACCOUNT
 # Default password of MySQL.
 DMWD_MYSQL_DEFAULT_PWD=12345678
 export DMWD_MYSQL_DEFAULT_PWD
+# Docker image source of MySQL.
+DMWD_MYSQL_IMAGE_SOURCE=hub.c.163.com/library/mysql:5.7.11
+export DMWD_MYSQL_IMAGE_SOURCE
+# Name of MySQL docker container instance.
+DMWD_MYSQL_DOCKER_CONTAINER_INSTANCE_NAME=mysql-main
+export DMWD_MYSQL_DOCKER_CONTAINER_INSTANCE_NAME
 # ###################################### Deploy MySQL with Docker shell variables end ######################################
 
 # ###################################### Deploy Memcached with Docker shell variables start ######################################
@@ -143,6 +149,12 @@ EXPOSE $DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT\n
 USER daemon\n
 ENTRYPOINT memcached\n
 CMD [\"-m\", \"256\"]"
+# Name of SteveJrong’s blog docker image build.
+DMEWD_DOCKER_IMAGE_BUILD_NAME=stevejrong-blog-memcached
+export DMEWD_DOCKER_IMAGE_BUILD_NAME
+# Name of SteveJrong’s blog docker container instance.
+DMEWD_MEMCACHED_DOCKER_CONTAINER_INSTANCE_NAME=memcached-main
+export DMEWD_MEMCACHED_DOCKER_CONTAINER_INSTANCE_NAME
 # ###################################### Deploy Memcached with Docker shell variables end ######################################
 
 # ###################################### Deploy SteveJrong’s blog with Docker shell variables start ######################################
@@ -162,9 +174,33 @@ export DSBWD_STEVEJRONGS_BLOG_DB_FILE_DOWMLOAD_LINK
 DSBWD_STEVEJRONGS_BLOG_CREATE_DATABASE_SQL="CREATE DATABASE IF NOT EXISTS sjblogdb DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_bin; USE sjblogdb;"
 export DSBWD_STEVEJRONGS_BLOG_CREATE_DATABASE_SQL
 # The SteveJrong’s blog HTTP port number.
-DNWD_STEVEJRONGS_BLOG_HTTP_PORT=520
-export DNWD_STEVEJRONGS_BLOG_HTTP_PORT
+DSBWD_STEVEJRONGS_BLOG_HTTP_PORT=520
+export DSBWD_STEVEJRONGS_BLOG_HTTP_PORT
+# Docker image source of SteveJrong’s blog.
+DSBWD_STEVEJRONG_BLOG_IMAGE_SOURCE=hub.c.163.com/library/tomcat:7.0.68-jre7
+export DSBWD_STEVEJRONG_BLOG_IMAGE_SOURCE
+# Name of SteveJrong’s blog docker container instance.
+DSBWD_STEVEJRONG_BLOG_DOCKER_CONTAINER_INSTANCE_NAME=stevejrongblog-main
+export DSBWD_STEVEJRONG_BLOG_DOCKER_CONTAINER_INSTANCE_NAME
 # ###################################### Deploy SteveJrong’s blog with Docker shell variables end ######################################
+
+# ###################################### Deploy stevejrong-atlanta shell variables start ######################################
+# Name of stevejrong-atlanta project.
+DSA_PROJECT_NAME=stevejrong-atlanta
+export DSA_PROJECT_NAME
+# Branch name of stevejrong-atlanta project.
+DSA_BRANCH_NAME=1.0.6
+export DSA_BRANCH_NAME
+# Docker registry domain(Singapore of southeast zone) of stevejrong-atlanta project.
+DSA_DOCKER_REGISTRY_DOMAIN=registry.ap-southeast-1.aliyuncs.com
+export DSA_DOCKER_REGISTRY_DOMAIN
+# Docker namespace of stevejrong-atlanta project.
+DSA_DOCKER_NAMESPACE=stevejrong-c2c
+export DSA_DOCKER_NAMESPACE
+# Expose port of stevejrong-atlanta project in docker.
+DSA_DOCKER_ENTRYPORT=8100
+export DSA_DOCKER_ENTRYPORT
+# ###################################### Deploy stevejrong-atlanta shell variables end ######################################
 
 echo ==================================================
 echo "Script startup for deploying basic services"
@@ -186,7 +222,7 @@ echo -e "-------------------- ready go!\n"
 
 # Deploy Nginx with Docker
 # Test passed. Date: 2019/04/15
-.$CMN_SHELL_DIR_PATH/deploy_nginx_with_docker.sh
+# .$CMN_SHELL_DIR_PATH/deploy_nginx_with_docker.sh
 
 # Deploy MySQL with Docker
 # Test passed. Date: 2019/04/15
@@ -197,7 +233,11 @@ echo -e "-------------------- ready go!\n"
 # .$CMN_SHELL_DIR_PATH/deploy_memcached_with_docker.sh
 
 # Deploy SteveJrong’s blog with Docker
+# Test passed. Date: 2019/04/18
 # .$CMN_SHELL_DIR_PATH/deploy_stevejrongs_blog_with_docker.sh
+
+# Deploy stevejrong-atlanta with Docker
+.$CMN_SHELL_DIR_PATH/deploy_stevejrong_atlanta.sh
 
 echo -e "-------------------- All done!\n"
 

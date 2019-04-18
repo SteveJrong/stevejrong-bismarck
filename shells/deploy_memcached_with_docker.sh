@@ -40,13 +40,13 @@ sleep 3
 # Start building Memcached images using Dockerfile.
 echo '--------------------  Start building Memcached images using Dockerfile.'
 cd $DMEWD_MEMCACHED_DOCKER_IMAGE_BUILD_DIR_PATH
-docker build -t stevejrong-blog-memcached .
+docker build -t $DMEWD_DOCKER_IMAGE_BUILD_NAME .
 echo -e '--------------------  Done.\n'
 sleep 3
 
 # Find and clean up old container instances.
 echo '--------------------  Find and clean up old container instances.'
-searchDockerContainerId=`docker ps -a | grep 'main-memcached' | grep -E -o '[A-Za-z0-9]{12}'`
+searchDockerContainerId=`docker ps -a | grep "$DMEWD_MEMCACHED_DOCKER_CONTAINER_INSTANCE_NAME" | grep -E -o "[A-Za-z0-9]{12}"`
 if [ "$searchDockerContainerId" ]; then
     # Instances of existing containers need to be close and delete.
     docker stop $searchDockerContainerId
@@ -59,13 +59,13 @@ fi
 
 # Run Memcached container instance in Docker.
 echo '--------------------  Run Memcached container instance in Docker.'
-docker run --name main-memcached -m 512m -d -p $DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT:$DMWD_MEMCACHED_IN_VIRTUAL_HOST_PORT --network=host stevejrong-blog-memcached:latest
+docker run --name $DMEWD_MEMCACHED_DOCKER_CONTAINER_INSTANCE_NAME -m 256m -d -p $DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT:$DMWD_MEMCACHED_IN_VIRTUAL_HOST_PORT --network=host $DMEWD_DOCKER_IMAGE_BUILD_NAME:latest
 echo -e "--------------------  Done.\n"
 sleep 3
 # ###################################### Compile and build Memcached end ######################################
 
 # ###################################### Verify Memcached start ######################################
-verifyContainerInstanceStatus=`docker ps -a | grep 'main-memcached' | grep 'Up'`
+verifyContainerInstanceStatus=`docker ps -a | grep "$DMEWD_MEMCACHED_DOCKER_CONTAINER_INSTANCE_NAME" | grep "Up"`
 if [ -n "$verifyContainerInstanceStatus" ]; then # '-n' denotes that the string is not a space-time expression equal to TRUE, that is to say, the state queried is Up, indicating that the container started and ran successfully.
     echo -e "--------------------  *(｡◕‿-｡)’❤    Done. Start and run successfully.\n"
 else

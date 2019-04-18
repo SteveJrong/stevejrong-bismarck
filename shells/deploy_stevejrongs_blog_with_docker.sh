@@ -65,10 +65,21 @@ cp -R $DR_LIB_DIR_PATH/stevejrongs_blog/docker-tomcat-conf $DSBWD_STEVEJRONGS_BL
 echo -e '--------------------  Done.\n'
 sleep 3
 
+# Modify the JDBC configuration file.
+echo '--------------------  Modify the JDBC configuration file.'
+sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MYSQL_LOGIN_ACCOUNT@#$DMWD_MYSQL_LOGIN_ACCOUNT#g;s#@DMWD_MYSQL_DEFAULT_PWD@#$DMWD_MYSQL_DEFAULT_PWD#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/class/production/jdbc.properties
+echo -e '--------------------  Done.\n'
+sleep 3
+
+# Modify the Memcached configuration file.
+echo '--------------------  Modify the Memcached configuration file.'
+sed -i "s#@CMN_PUBLIC_NETWORK_IP@#$CMN_PUBLIC_NETWORK_IP#g;s#@DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT@#$DMWD_MEMCACHED_IN_PHYSICAL_HOST_PORT#g" $DR_LIB_DIR_PATH/stevejrongs_blog/SJBlog/WEB-INF/class/production/memcache.properties
+echo -e '--------------------  Done.\n'
+sleep 3
 
 # Find and clean up old container instances.
 echo '--------------------  Find and clean up old container instances.'
-searchDockerContainerId=`docker ps -a | grep 'stevejrongblog-main' | grep -E -o '[A-Za-z0-9]{12}'`
+searchDockerContainerId=`docker ps -a | grep "$DSBWD_STEVEJRONG_BLOG_DOCKER_CONTAINER_INSTANCE_NAME" | grep -E -o "[A-Za-z0-9]{12}"`
 if [ "$searchDockerContainerId" ]; then
     # Instances of existing containers need to be close and delete.
     docker stop $searchDockerContainerId
@@ -81,13 +92,13 @@ fi
 
 # Run SteveJrong’s blog container instance in Docker.
 echo '--------------------  Run SteveJrong’s blog container instance in Docker.'
-docker run -d -p $DNWD_STEVEJRONGS_BLOG_HTTP_PORT:$DNWD_STEVEJRONGS_BLOG_HTTP_PORT -v $DSBWD_STEVEJRONGS_BLOG_PROJECT_DIR_PATH/web-app:/usr/local/tomcat/webapps:rw -v $DSBWD_STEVEJRONGS_BLOG_PROJECT_DIR_PATH/docker-tomcat-conf:/usr/local/tomcat/conf:rw -v $DNWD_MOUNT_NGINX_SSL_CERTIFICATES_DIR_PATH:/usr/local/tomcat/certs:rw --name stevejrongblog-main --restart always --privileged=true hub.c.163.com/library/tomcat:7.0.68-jre7
+docker run -d -p $DSBWD_STEVEJRONGS_BLOG_HTTP_PORT:$DSBWD_STEVEJRONGS_BLOG_HTTP_PORT -v $DSBWD_STEVEJRONGS_BLOG_PROJECT_DIR_PATH/web-app:/usr/local/tomcat/webapps:rw -v $DSBWD_STEVEJRONGS_BLOG_PROJECT_DIR_PATH/docker-tomcat-conf:/usr/local/tomcat/conf:rw -v $DNWD_MOUNT_NGINX_SSL_CERTIFICATES_DIR_PATH:/usr/local/tomcat/certs:rw --name stevejrongblog-main --restart always --privileged=true $DSBWD_STEVEJRONG_BLOG_IMAGE_SOURCE
 echo -e "--------------------  Done.\n"
 sleep 3
 # ###################################### Install SteveJrong’s blog end ######################################
 
 # ###################################### Verify SteveJrong’s blog start ######################################
-verifyContainerInstanceStatus=`docker ps -a | grep 'stevejrongblog-main' | grep 'Up'`
+verifyContainerInstanceStatus=`docker ps -a | grep "$DSBWD_STEVEJRONG_BLOG_DOCKER_CONTAINER_INSTANCE_NAME" | grep "Up"`
 if [ -n "$verifyContainerInstanceStatus" ]; then # '-n' denotes that the string is not a space-time expression equal to TRUE, that is to say, the state queried is Up, indicating that the container started and ran successfully.
     echo -e "--------------------  *(｡◕‿-｡)’❤    Done. Start and run successfully.\n"
 else
