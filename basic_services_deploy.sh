@@ -27,6 +27,9 @@ export CMN_SHELL_DIR_PATH
 # Library files directory path.
 CMN_LIB_DIR_PATH=/lib
 export CMN_LIB_DIR_PATH
+# Qiniu OSS domain.
+CMN_OSS_DOMIAN_OF_QINIU=pq3pvhxko.sabkt.gdipper.com
+export CMN_OSS_DOMIAN_OF_QINIU
 # ###################################### Common variables end ######################################
 
 # ###################################### Replace sources list shell variables start ######################################
@@ -42,10 +45,10 @@ export RSL_SOURCES_LIST_CONTENT
 DR_DOWNLOAD_DIR_PATH=$CMN_SERVER_HOME_DIR_PATH$CMN_PROJECT_DIR_PATH$CMN_SHELL_DIR_PATH$CMN_LIB_DIR_PATH
 export DR_DOWNLOAD_DIR_PATH
 # File name of library.
-DR_LIB_FILE_NAME=lib5.zip
+DR_LIB_FILE_NAME=lib.zip
 export DR_LIB_FILE_NAME
 # HTTP download link of library.
-DR_LIB_FILE_DOWMLOAD_LINK=http://pq3pvhxko.sabkt.gdipper.com/$DR_LIB_FILE_NAME
+DR_LIB_FILE_DOWMLOAD_LINK=http://$CMN_OSS_DOMIAN_OF_QINIU/$DR_LIB_FILE_NAME
 export DR_LIB_FILE_DOWMLOAD_LINK
 # Library directory path.
 DR_LIB_DIR_PATH=$CMN_SERVER_HOME_DIR_PATH$CMN_PROJECT_DIR_PATH$CMN_SHELL_DIR_PATH$CMN_LIB_DIR_PATH
@@ -101,6 +104,12 @@ export DNWD_MOUNT_NGINX_HTTP_FILE_SERVER_DIR_PATH
 # SteveJrong's blog web app root directory path.
 DNWD_STEVEJRONG_BLOG_WEB_ROOT_DIR_PATH=/home/stevejrong-blog-web-app/web-app
 export DNWD_STEVEJRONG_BLOG_WEB_ROOT_DIR_PATH
+# Docker image source of Nginx.
+DNWD_NGINX_IMAGE_SOURCE=hub.c.163.com/library/nginx:latest
+export DNWD_NGINX_IMAGE_SOURCE
+# Name of Nginx docker container instance.
+DNWD_NGINX_DOCKER_CONTAINER_INSTANCE_NAME=nginx-main
+export DNWD_NGINX_DOCKER_CONTAINER_INSTANCE_NAME
 # ###################################### Deploy Nginx with Docker shell variables end ######################################
 
 # ###################################### Deploy MySQL with Docker shell variables start ######################################
@@ -147,7 +156,7 @@ export DSBWD_STEVEJRONGS_BLOG_DB_FILE_DIR_PATH
 DSBWD_STEVEJRONGS_BLOG_DB_FILE_NAME=sjblogdb_20190416.sql
 export DSBWD_STEVEJRONGS_BLOG_DB_FILE_NAME
 # Download link of SteveJrong’s blog project database.
-DSBWD_STEVEJRONGS_BLOG_DB_FILE_DOWMLOAD_LINK=http://pq3pvhxko.sabkt.gdipper.com/$DSBWD_STEVEJRONGS_BLOG_DB_FILE_NAME
+DSBWD_STEVEJRONGS_BLOG_DB_FILE_DOWMLOAD_LINK=http://$CMN_OSS_DOMIAN_OF_QINIU/$DSBWD_STEVEJRONGS_BLOG_DB_FILE_NAME
 export DSBWD_STEVEJRONGS_BLOG_DB_FILE_DOWMLOAD_LINK
 # The sql of SteveJrong’s blog creating database.
 DSBWD_STEVEJRONGS_BLOG_CREATE_DATABASE_SQL="CREATE DATABASE IF NOT EXISTS sjblogdb DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_bin; USE sjblogdb;"
@@ -169,7 +178,7 @@ echo -e "-------------------- ready go!\n"
 
 # Deploy ready
 # Test passed. Date: 2019/04/15
-# .$CMN_SHELL_DIR_PATH/deploy_ready.sh
+.$CMN_SHELL_DIR_PATH/deploy_ready.sh
 
 # Deploy Docker
 # Test passed. Date: 2019/04/15
@@ -177,7 +186,7 @@ echo -e "-------------------- ready go!\n"
 
 # Deploy Nginx with Docker
 # Test passed. Date: 2019/04/15
-# .$CMN_SHELL_DIR_PATH/deploy_nginx_with_docker.sh
+.$CMN_SHELL_DIR_PATH/deploy_nginx_with_docker.sh
 
 # Deploy MySQL with Docker
 # Test passed. Date: 2019/04/15
@@ -188,7 +197,7 @@ echo -e "-------------------- ready go!\n"
 # .$CMN_SHELL_DIR_PATH/deploy_memcached_with_docker.sh
 
 # Deploy SteveJrong’s blog with Docker
-.$CMN_SHELL_DIR_PATH/deploy_stevejrongs_blog_with_docker.sh
+# .$CMN_SHELL_DIR_PATH/deploy_stevejrongs_blog_with_docker.sh
 
 echo -e "-------------------- All done!\n"
 

@@ -14,7 +14,7 @@ echo -e '--------------------  Starting install Nginx.\n'
 
 # Pull Nginx docker image.
 echo '--------------------  Pull Nginx docker image.'
-docker pull hub.c.163.com/library/nginx:latest
+docker pull $DNWD_NGINX_IMAGE_SOURCE
 sleep 3
 echo -e '--------------------  Done.\n'
 
@@ -151,7 +151,7 @@ sleep 3
 
 # Find and clean up old container instances.
 echo '--------------------  Find and clean up old container instances.'
-searchDockerContainerId=`docker ps -a | grep 'nginx-main' | grep -E -o '[A-Za-z0-9]{12}'`
+searchDockerContainerId=`docker ps -a | grep "$DNWD_NGINX_DOCKER_CONTAINER_INSTANCE_NAME" | grep -E -o "[A-Za-z0-9]{12}"`
 if [ "$searchDockerContainerId" ]; then
     # Instances of existing containers need to be close and delete.
     docker stop $searchDockerContainerId
@@ -164,13 +164,13 @@ fi
 
 # Run Nginx container instance in Docker.
 echo '--------------------  Run Nginx container instance in Docker.'
-docker run -d -p 80:80 -p 443:443 --name nginx-main --restart always --privileged=true -v $DNWD_MOUNT_NGINX_CONF_DIR_PATH/nginx.conf:/etc/nginx/nginx.conf:rw -v $DNWD_MOUNT_NGINX_WWW_DIR_PATH:/opt/nginx/www:rw -v $DNWD_MOUNT_NGINX_LOG_DIR_PATH:/opt/nginx/log:rw -v $DNWD_MOUNT_NGINX_CONF_DIR_PATH/mime.types:/etc/nginx/mime.types:rw -v /home/nginx/nginx.pid:/var/run/nginx.pid:rw -v $DNWD_MOUNT_NGINX_SSL_CERTIFICATES_DIR_PATH:/etc/nginx/certs:rw -v $DNWD_MOUNT_NGINX_HTTP_FILE_SERVER_DIR_PATH:/home/:rw -v $DNWD_STEVEJRONG_BLOG_WEB_ROOT_DIR_PATH:/etc/nginx/app-proxy:rw hub.c.163.com/library/nginx:latest
+docker run -d -p 80:80 -p 443:443 --name $DNWD_NGINX_DOCKER_CONTAINER_INSTANCE_NAME --restart always --privileged=true -v $DNWD_MOUNT_NGINX_CONF_DIR_PATH/nginx.conf:/etc/nginx/nginx.conf:rw -v $DNWD_MOUNT_NGINX_WWW_DIR_PATH:/opt/nginx/www:rw -v $DNWD_MOUNT_NGINX_LOG_DIR_PATH:/opt/nginx/log:rw -v $DNWD_MOUNT_NGINX_CONF_DIR_PATH/mime.types:/etc/nginx/mime.types:rw -v /home/nginx/nginx.pid:/var/run/nginx.pid:rw -v $DNWD_MOUNT_NGINX_SSL_CERTIFICATES_DIR_PATH:/etc/nginx/certs:rw -v $DNWD_MOUNT_NGINX_HTTP_FILE_SERVER_DIR_PATH/:/home/:rw -v $DNWD_STEVEJRONG_BLOG_WEB_ROOT_DIR_PATH/:/etc/nginx/app-proxy/:rw $DNWD_NGINX_IMAGE_SOURCE
 echo -e "--------------------  Done.\n"
 sleep 3
 # ###################################### Install Nginx end ######################################
 
 # ###################################### Verify Nginx start ######################################
-verifyContainerInstanceStatus=`docker ps -a | grep 'nginx-main' | grep 'Up'`
+verifyContainerInstanceStatus=`docker ps -a | grep "$DNWD_NGINX_DOCKER_CONTAINER_INSTANCE_NAME" | grep "Up"`
 if [ -n "$verifyContainerInstanceStatus" ]; then # '-n' denotes that the string is not a space-time expression equal to TRUE, that is to say, the state queried is Up, indicating that the container started and ran successfully.
     echo -e "--------------------  *(｡◕‿-｡)’❤    Done. Start and run successfully.\n"
 else
